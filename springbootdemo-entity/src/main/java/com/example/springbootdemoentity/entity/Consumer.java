@@ -28,13 +28,4 @@ public class Consumer {
         this.email = "6666.qq.com";
     }
 
-   /* @Override
-    public String toString() {
-        return "Consumer{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", add='" + add + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }*/
 }

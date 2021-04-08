@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
 @EnableEurekaClient
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.ComponentScan;
  * 加入该注解即可将redis注入到到该module中；
  */
 @ComponentScan(value = "com.example.*")
+@EnableAsync
 public class SpringbootdemoConsumerApplication {
 
     public static void main(String[] args) {
