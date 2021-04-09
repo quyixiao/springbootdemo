@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class TestServiceImpl implements TestService {
 
     @Override
-    @Async
+    @Async("asyncTaskExecutor")
     public void testLog() {
         log.info("testLog");
     }
