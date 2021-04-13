@@ -1,6 +1,7 @@
 package com.example.springbootdemoconsumer.controller;
 
 
+import com.alibaba.ttl.threadpool.TtlExecutors;
 import com.example.springbootdemoconsumer.service.ProductService;
 import com.example.springbootdemoconsumer.service.TestService;
 import com.example.springbootdemoentity.entity.Consumer;
@@ -47,13 +48,15 @@ public class ConsumerController {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                log.info("子线程执行");
+                String str = productService.getProduct();
+                log.info("子线程执行 " + str);
             }
         }).start();
 
         for (int i = 0; i < 10; i++) {
             startThread(i);
         }
+
         Consumer consumer = new Consumer();
         log.info(consumer.toString());
         log.info(consumer.getAdd());
@@ -69,7 +72,7 @@ public class ConsumerController {
             @Override
             public void run() {
                 log.info("i = " + i + "   使用 主线程的线程编号 测试 ");
-                pool.submit(new MycallableA(i));
+                TtlExecutors.getTtlExecutorService(pool).submit(new MycallableA(i));
             }
         }).start();
     }
